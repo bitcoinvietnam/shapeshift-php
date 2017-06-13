@@ -56,6 +56,19 @@ class Client
 
     /**
      * @param string $pair
+     * @return Response\Get\DepositLimit
+     */
+    public function getDepositLimit($pair)
+    {
+        return $this->utils->serializer()->deserialize(
+            $this->utils->guzzle()->get(self::BASE_URL . '/limit/' . strtolower($pair))->getBody()->getContents(),
+            Response\Get\DepositLimit::class,
+            'json'
+        );
+    }
+
+    /**
+     * @param string $pair
      * @return Response\Get\MarketInfo
      */
     public function getMarketInfo($pair)
