@@ -1,0 +1,24 @@
+{
+    "name": "bitcoinvietnam/shapeshift-php",
+    "description": "PHP library to interact with the Shapeshift API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Winter",
+            "email": "alex@bitcoin.vn"
+        }
+    ],
+    "require": {
+        "jms/serializer": "^1.7",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BitcoinVietnam\\ShapeShift\\": "src/"
+        }
+    }
+}
