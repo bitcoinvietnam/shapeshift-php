@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @package BitcoinVietnam\ShapeShift\Response\Post
  */
-class SendAmount extends BaseResponse
+final class SendAmount extends BaseResponse
 {
     /**
      * @var Transaction

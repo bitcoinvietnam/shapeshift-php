@@ -22,7 +22,6 @@
 namespace BitcoinVietnam\ShapeShift;
 
 use BitcoinVietnam\ShapeShift\Response;
-use BitcoinVietnam\ShapeShift\Request;
 
 /**
  * Class Client
@@ -119,6 +118,34 @@ class Client
                 ['json' => $this->utils->serializer()->toArray($request)]
             )->getBody()->getContents(),
             Response\Post\SendAmount::class,
+            'json'
+        );
+    }
+
+    /**
+     * @param string $withdrawal
+     * @param string $pair
+     * @param string|null $returnAddress
+     * @param string|null $destTag
+     * @param string|null $rsAddress
+     * @return Response\Post\Shift
+     */
+    public function postShift($withdrawal, $pair, $returnAddress = null, $destTag = null, $rsAddress = null)
+    {
+        $request = $this->utils->request()->post()->shift()
+            ->setWithdrawal($withdrawal)
+            ->setPair($pair)
+            ->setReturnAddress($returnAddress)
+            ->setDestTag($destTag)
+            ->setRsAddress($rsAddress)
+            ->setApiKey($this->apiKey);
+
+        return $this->utils->serializer()->deserialize(
+            $this->utils->guzzle()->post(
+                self::BASE_URL . '/shift',
+                ['json' => $this->utils->serializer()->toArray($request)]
+            )->getBody()->getContents(),
+            Response\Post\Shift::class,
             'json'
         );
     }

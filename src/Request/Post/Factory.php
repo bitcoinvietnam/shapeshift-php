@@ -35,4 +35,12 @@ class Factory
     {
         return new SendAmount();
     }
+
+    /**
+     * @return Shift
+     */
+    public function shift()
+    {
+        return new Shift();
+    }
 }
